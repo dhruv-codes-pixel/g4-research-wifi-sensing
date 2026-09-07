@@ -33,6 +33,6 @@ Each milestone folder under `milestones/` contains the corresponding technical s
 
 ## References
 
-A complete, IEEE-format bibliography is maintained in [docs/references.md](./docs/references.md).
+A complete, IEEE-format bibliography is maintained in [references.md](./references.md).
 
 ---
