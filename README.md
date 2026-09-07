@@ -18,7 +18,7 @@
 
 ## Project Summary
 
-This project investigates the robustness of domain-invariant Wi-Fi CSI motion indicators, with a primary focus on Body-Velocity-Profile (BVP)-style processing, under varying synchronization and bandwidth conditions. We establish a baseline sensing performance and then introduce controlled timing/synchronization offsets and bandwidth reductions to characterize the resulting sensitivity curves and identify potential knee or failure points. A detailed discussion of the motivation, objectives, and methodology is provided in the [Milestone 1 proposal](./milestones/M1-proposal/README.md).
+This project investigates the robustness of domain-invariant Wi-Fi CSI motion indicators, with a primary focus on Body-Velocity-Profile (BVP)-style processing, under varying synchronization and bandwidth conditions. We establish a baseline sensing performance and then introduce controlled timing/synchronization offsets and bandwidth reductions to characterize the resulting sensitivity curves and identify potential knee or failure points. A detailed discussion of the motivation, objectives, and methodology is provided in the [Milestone 1 proposal](./M1%20Proposal%20%26%20Scoping/G4_PP2026_ECE310.pdf)
 
 ## Project Roadmap
 
