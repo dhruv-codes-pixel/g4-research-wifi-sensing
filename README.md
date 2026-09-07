@@ -24,7 +24,7 @@ This project investigates the robustness of domain-invariant Wi-Fi CSI motion in
 
 | Milestone | Focus | Status |
 |-----------|-------|--------|
-| [M1 — Proposal & Scoping](./milestones/M1-proposal/) | Problem definition, objectives, dataset, and project plan | Submitted, September 7, 2026 |
+| [M1 – Proposal & Scoping](./M1%20Proposal%20%26%20Scoping/) | Problem definition, objectives, dataset, and project plan | Submitted, September 7, 2026 | | Problem definition, objectives, dataset, and project plan | Submitted, September 7, 2026 |
 | M2 — Technical Artifact | Baseline BVP pipeline and perturbation framework | Not yet started |
 | M3 — Results & Evaluation | Sensitivity curves and knee-point analysis | Not yet started |
 | M4 — Final Submission | Correction method and final report | Not yet started |
