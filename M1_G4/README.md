@@ -1,19 +1,21 @@
-# Milestone 1 — Proposal & Scoping
+# Milestone 1
 
 **Category:** Research in Wi-Fi Sensing
-**Submission deadline:** Sep 7, 2026, 11:59 PM
-**Status:** --
 
-This folder holds everything submitted for M1: the proposal document, the individual reflections, and (once recorded) the milestone video.
+This folder holds everything submitted for M1: the proposal document, the milestone video.
 
 ## Contents
 
 ```
-M1-proposal/
-├── README.md                    
-├── G4_PP2026_ECE310.pdf        
-├── video/                       
-└── reflections/                 
+M1_G4/
+├── README.md             
+├── Report/
+│   ├── README.md         
+│   └── G4_PP2026_ECE310.pdf  
+├── Video/
+│   └── README.md         
+├── Data/
+│   └── README.md                        
 ```
 
 ## Problem Statement
@@ -52,10 +54,3 @@ This work is positioned against recent Wi-Fi sensing generalizability surveys, c
 ## Dataset
 
 **Widar 3.0** (IEEE DataPort, DOI [10.21227/7ZNF-QP86](https://ieee-dataport.org/open-access/widar-30-wifi-based-activity-recognition-dataset)) — CSI from Intel 5300 NICs across multiple environments, users, postures, orientations, and gesture classes. Used as the unperturbed baseline; perturbed variants are generated programmatically and documented in `data/perturbed/`.
-
-## Deliverables
-
-| Item | Location |
-|------|----------|
-| Proposal (PDF) | [`G4_PP2026_ECE310.pdf`](./G4_PP2026_ECE310.pdf) |
-
