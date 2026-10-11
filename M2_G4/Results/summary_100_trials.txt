@@ -1,0 +1,27 @@
+
+E1_phase_vs_gamma
+  Eq21 (baseline)              0.5:-8.8dB 0.7:0.3dB 0.8:6.5dB 0.9:15.2dB 0.95:16.2dB 0.99:16.4dB
+  Eq22 (802.11az baseline)     0.5:-8.3dB 0.7:-3.3dB 0.8:-0.3dB 0.9:3.2dB 0.95:5.6dB 0.99:8.4dB
+  Algo4+Eq25 (proposed)        0.5:8.0dB 0.7:15.1dB 0.8:16.0dB 0.9:16.5dB 0.95:16.7dB 0.99:16.9dB
+
+E2_gain_vs_gamma
+  Eq6 (baseline)               0.5:19.6dB 0.7:19.4dB 0.8:19.2dB 0.9:19.1dB 0.95:19.1dB 0.99:19.0dB
+  Algo1                        0.5:16.9dB 0.7:16.3dB 0.8:15.9dB 0.9:14.6dB 0.95:13.1dB 0.99:7.3dB
+  Algo3 (proposed)             0.5:20.1dB 0.7:19.6dB 0.8:18.5dB 0.9:16.5dB 0.95:13.9dB 0.99:7.4dB
+  No gain correction           0.5:20.1dB 0.7:19.4dB 0.8:18.4dB 0.9:16.3dB 0.95:13.7dB 0.99:7.2dB
+
+E3_phase_vs_timing_range_ns
+  Eq21 (baseline)              100:15.2dB 400:14.9dB 800:11.1dB 1600:-9.7dB 2400:-12.1dB 3200:-10.1dB
+  Eq22 (802.11az baseline)     100:3.2dB 400:3.2dB 800:3.2dB 1600:3.2dB 2400:3.2dB 3200:3.2dB
+  Algo4+Eq25 (proposed)        100:16.5dB 400:16.5dB 800:16.5dB 1600:16.5dB 2400:16.5dB 3200:16.5dB
+
+E4_phase_vs_K
+  Eq21 (baseline)              64:15.2dB 128:11.7dB 256:11.1dB 512:9.8dB
+  Eq22 (802.11az baseline)     64:3.2dB 128:0.9dB 256:-2.1dB 512:-7.7dB
+  Algo4+Eq25 (proposed)        64:16.5dB 128:18.7dB 256:20.5dB 512:20.9dB
+
+E5_gain_vs_K
+  Eq6 (baseline)               64:19.1dB 128:20.5dB 256:22.0dB 512:23.2dB
+  Algo1                        64:14.6dB 128:15.5dB 256:16.3dB 512:16.6dB
+  Algo3 (proposed)             64:16.5dB 128:16.6dB 256:16.6dB 512:16.7dB
+  No gain correction           64:16.3dB 128:16.4dB 256:16.4dB 512:16.5dB
