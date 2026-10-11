@@ -7,7 +7,7 @@ What M2 contains
 - Code/    : CSI simulator, implementation of the paper's gain/phase correction + baselines, experiments E1-E5
 - Results/ : figures E1-E5, results.json, summary_100_trials.txt
 - Data/    : no external data at M2 (all data simulated, seeded)
-- Video/   : link to walkthrough
+- Video/   : https://drive.google.com/file/d/1zATPBzlj8gcWwaH4BWLl-P1tfdjNWZHf/view?usp=sharing
 
 How to run
     cd Code
