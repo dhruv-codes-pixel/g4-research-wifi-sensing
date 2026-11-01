@@ -1,0 +1,44 @@
+PASS  test_agc_only_power_series
+PASS  test_agc_only_through_csi
+PASS  test_building_blocks_match_m2
+PASS  test_csi_sim_unchanged
+PASS  test_eq16_printed_form_is_a_typo
+PASS  test_lemma1_constant
+PASS  test_m2_bug_reproduced_and_cause
+PASS  test_noise_005_and_010_lambda_recovered
+PASS  test_noise_020_040_not_worse_than_no_correction
+PASS  test_original_grid_never_contains_true_step
+PASS  test_original_variant_is_the_m2_code
+PASS  test_sim_ext_reproduces_csi_sim
+12/12 tests passed
+wrote /home/claude/repo/Results/gain/sanity_test.csv
+drift=False noise=0.00 original    lam_hat=0.525 [0.53,0.53] err=0.025 hit=1.00 rms=0.016 (none 0.314)
+drift=False noise=0.00 fixed       lam_hat=0.500 [0.50,0.50] err=0.000 hit=1.00 rms=0.000 (none 0.314)
+drift=False noise=0.00 fixed+bonf  lam_hat=0.500 [0.50,0.50] err=0.000 hit=1.00 rms=0.000 (none 0.314)
+drift=False noise=0.05 original    lam_hat=0.474 [0.46,0.50] err=0.026 hit=0.95 rms=0.023 (none 0.316)
+drift=False noise=0.05 fixed       lam_hat=0.500 [0.50,0.50] err=0.000 hit=0.91 rms=0.004 (none 0.316)
+drift=False noise=0.05 fixed+bonf  lam_hat=0.500 [0.50,0.50] err=0.000 hit=1.00 rms=0.004 (none 0.316)
+drift=False noise=0.10 original    lam_hat=0.544 [0.53,0.56] err=0.044 hit=0.59 rms=0.059 (none 0.316)
+drift=False noise=0.10 fixed       lam_hat=0.510 [0.50,0.52] err=0.010 hit=0.77 rms=0.059 (none 0.316)
+drift=False noise=0.10 fixed+bonf  lam_hat=0.520 [0.51,0.53] err=0.020 hit=0.99 rms=0.054 (none 0.316)
+drift=False noise=0.20 original    lam_hat=2.874 [2.76,3.05] err=2.374 hit=0.00 rms=0.315 (none 0.316)
+drift=False noise=0.20 fixed       lam_hat=0.600 [0.33,2.73] err=0.100 hit=0.05 rms=0.226 (none 0.316)
+drift=False noise=0.20 fixed+bonf  lam_hat=2.840 [2.72,3.02] err=2.340 hit=0.03 rms=0.314 (none 0.316)
+drift=False noise=0.40 original    lam_hat=4.176 [3.97,4.38] err=3.676 hit=0.00 rms=0.316 (none 0.315)
+drift=False noise=0.40 fixed       lam_hat=4.040 [1.01,4.27] err=3.540 hit=0.01 rms=0.322 (none 0.315)
+drift=False noise=0.40 fixed+bonf  lam_hat=4.170 [3.97,4.37] err=3.670 hit=0.00 rms=0.316 (none 0.315)
+drift=True  noise=0.00 original    lam_hat=2.387 [0.51,2.55] err=1.887 hit=0.42 rms=0.316 (none 0.374)
+drift=True  noise=0.00 fixed       lam_hat=0.160 [0.13,0.17] err=0.340 hit=0.00 rms=0.036 (none 0.374)
+drift=True  noise=0.00 fixed+bonf  lam_hat=0.160 [0.13,0.17] err=0.340 hit=0.02 rms=0.039 (none 0.374)
+drift=True  noise=0.05 original    lam_hat=2.614 [0.56,2.74] err=2.114 hit=0.22 rms=0.337 (none 0.374)
+drift=True  noise=0.05 fixed       lam_hat=0.250 [0.23,0.45] err=0.250 hit=0.25 rms=0.075 (none 0.374)
+drift=True  noise=0.05 fixed+bonf  lam_hat=0.470 [0.27,0.50] err=0.030 hit=0.59 rms=0.099 (none 0.374)
+drift=True  noise=0.10 original    lam_hat=2.934 [2.81,3.02] err=2.434 hit=0.00 rms=0.340 (none 0.372)
+drift=True  noise=0.10 fixed       lam_hat=0.465 [0.24,0.51] err=0.035 hit=0.40 rms=0.126 (none 0.372)
+drift=True  noise=0.10 fixed+bonf  lam_hat=0.530 [0.50,0.57] err=0.030 hit=0.61 rms=0.137 (none 0.372)
+drift=True  noise=0.20 original    lam_hat=3.364 [3.25,3.54] err=2.864 hit=0.00 rms=0.344 (none 0.372)
+drift=True  noise=0.20 fixed       lam_hat=3.205 [0.39,3.44] err=2.705 hit=0.04 rms=0.330 (none 0.372)
+drift=True  noise=0.20 fixed+bonf  lam_hat=3.360 [3.23,3.53] err=2.860 hit=0.00 rms=0.344 (none 0.372)
+drift=True  noise=0.40 original    lam_hat=4.476 [4.28,4.72] err=3.976 hit=0.00 rms=0.345 (none 0.373)
+drift=True  noise=0.40 fixed       lam_hat=4.100 [0.46,4.51] err=3.600 hit=0.10 rms=0.368 (none 0.373)
+drift=True  noise=0.40 fixed+bonf  lam_hat=4.465 [4.28,4.71] err=3.965 hit=0.00 rms=0.345 (none 0.373)
