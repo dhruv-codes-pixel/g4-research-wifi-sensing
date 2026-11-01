@@ -23,41 +23,6 @@ Milestone 3 extends the preliminary M2 findings by:
 
 ---
 
-### Repository Structure
-
-```text
-M3_g4-research-wifi-sensing/
-├── README.md                                  # Repository overview and reproduction guide
-├── Protocol.md                                # Master 5-member protocol and task division
-├── data_check.md                              # Detailed dataset facts and access barrier audit
-├── Report/
-│   ├── M3_g4-research-wifi-sensing_Report.pdf # Final submission PDF report (Archival IEEE format)
-│   └── M3_g4-research-wifi-sensing_Report.html# Standalone publication HTML report with embedded figures
-├── Code/
-│   ├── channel_tgn.py                         # IEEE 802.11 TGn Model C implementation
-│   ├── csi_sim.py                             # Upgraded M3 simulator and vectorized Algorithm 4
-│   ├── run_m3.py                              # Master 500-trial batch experiment runner (E1, E3, E4)
-│   ├── run_single_curve.py                    # Process-isolated curve worker
-│   ├── doppler_exp.py                         # Downstream 20 Hz Doppler sensing experiment
-│   ├── stats_utils.py                         # Non-parametric bootstrap CI and Wilcoxon testing utilities
-│   └── real_data.py                           # Hardware CSI ingestion and residual evaluation pipeline
-└── Results/
-    ├── M3_channel_PDP.png                     # Validated TGn Model C power-delay profile
-    ├── M3_channel_frequency_response.png      # Frequency-selective response across subcarriers
-    ├── M3_old_vs_new_channel.png              # Comparison: M2 synthetic vs. M3 TGn Model C
-    ├── M3_E1_phase_vs_gamma.png               # Phase correction vs. static fraction gamma
-    ├── M3_E3_phase_vs_timing.png              # Robustness across timing error (100 ns - 3.2 us)
-    ├── M3_E3_CP_ISI_diagnostic.png            # Cyclic prefix (0.8 us) diagnostic boundary
-    ├── M3_E4_phase_vs_K.png                   # Bandwidth scaling across K = 64 to K = 512
-    ├── M3_Figure7_overlay.png                 # Empirical overlay with Ratnam et al. Fig. 7(a)
-    ├── M3_results.json                        # Trial statistics, bootstrap CIs, and metadata
-    ├── doppler/                               # Doppler experiment summaries, CIs, and spectral plots
-    └── real_data/                             # Hardware dataset metadata, config, and access logs
-        ├── log.txt                            # Full timestamped access-attempt log (HTTP 403 audit)
-        ├── dataset_info.csv                   # Portner et al. multi-device hardware registry
-        ├── experiment_config.json             # Execution configuration (status: not_run)
-        └── residual_comparison.csv            # Result placeholder confirming zero data fabrication
-```
 
 ---
 
@@ -88,33 +53,4 @@ For full operational procedures, task allocation rationale, and our long-term ro
 
 ---
 
-### Reproduction Guide
-
-To reproduce the core 500-trial simulation experiments:
-
-```bash
-# 1. Clone repository and navigate to Code directory
-cd Code/
-
-# 2. Install dependencies
-pip install numpy scipy scikit-learn matplotlib pandas
-
-# 3. Execute master M3 experiment runner (generates E1, E3, E4 results and figures)
-python run_m3.py
-
-# 4. Run the downstream Doppler sensing experiment (200 trials across 6 configurations)
-python doppler_exp.py 200
-
-# 5. Review generated results in Results/
-```
-
-To test the real-data pipeline when local parquet captures are supplied:
-
-```bash
-python Code/real_data.py --data-dir <path_to_unzipped_base_campaign_ch11> --out Results/real_data/ --trials 20 --window 500 --seed 1
-```
-
----
-
-*Official submission for ECE 310 Major Project Milestone 3.*
 
