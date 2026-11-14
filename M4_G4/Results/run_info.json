@@ -1,0 +1,13 @@
+{
+ "script": "02_real_kpi.py",
+ "root": "/home/claude/work/WiFi_CSI_Research/data/20MHz",
+ "P": 300,
+ "skip": 200,
+ "gap_s": 0.5,
+ "tones": 242,
+ "Ts": 1.28e-05,
+ "n_captures": 15,
+ "n_rows": 4830,
+ "seconds": 93.9,
+ "note": "independent unit = capture; windows within a capture are correlated"
+}

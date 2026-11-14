@@ -1,0 +1,103 @@
+=== KPI1  V (dB, lower better): mean over captures [min, max], PRIMARY (full-length captures) ===
+E_day    n=4  raw_nogain:   -0.02 [  -0.02,  -0.01]  A0:   -0.02 [  -0.02,  -0.01]  A1_eq21:  -26.82 [ -32.00, -24.68]  A1w_eq21_wide:  -36.21 [ -36.26, -36.11]  A2_eq22:  -35.33 [ -35.42, -35.10]  A3_algo4:  -36.26 [ -36.31, -36.15]
+E_night  n=4  raw_nogain:   -0.02 [  -0.02,  -0.01]  A0:   -0.02 [  -0.02,  -0.01]  A1_eq21:  -35.44 [ -35.93, -34.58]  A1w_eq21_wide:  -35.98 [ -36.03, -35.93]  A2_eq22:  -34.73 [ -34.77, -34.69]  A3_algo4:  -35.99 [ -36.04, -35.94]
+S1       n=2  raw_nogain:   -0.01 [  -0.02,  -0.01]  A0:   -0.01 [  -0.02,  -0.01]  A1_eq21:  -24.01 [ -24.40, -23.63]  A1w_eq21_wide:  -32.07 [ -32.33, -31.80]  A2_eq22:  -27.52 [ -27.76, -27.28]  A3_algo4:  -32.20 [ -32.45, -31.95]
+M4       n=3  raw_nogain:   -0.01 [  -0.02,  -0.01]  A0:   -0.01 [  -0.02,  -0.01]  A1_eq21:  -23.89 [ -24.36, -23.39]  A1w_eq21_wide:  -24.04 [ -24.50, -23.55]  A2_eq22:  -19.06 [ -19.64, -18.65]  A3_algo4:  -24.48 [ -24.63, -24.30]
+
+=== KPI2 median phase circ-std (deg), KPI4 C_mean / C_lag1, KPI3 ms/window (primary) ===
+E_day    raw_nogain  phase  140.63  C_mean 0.0549  C_lag1 -0.0016  time   0.13 ms
+E_day    A0          phase  140.63  C_mean 0.0549  C_lag1 -0.0016  time   0.62 ms
+E_day    A1_eq21     phase    3.35  C_mean 0.9968  C_lag1 0.9936  time   7.32 ms
+E_day    A1w_eq21_wide phase    0.49  C_mean 0.9999  C_lag1 0.9998  time  10.40 ms
+E_day    A2_eq22     phase    0.72  C_mean 0.9999  C_lag1 0.9997  time   6.67 ms
+E_day    A3_algo4    phase    0.48  C_mean 0.9999  C_lag1 0.9998  time  18.01 ms
+E_night  raw_nogain  phase  140.90  C_mean 0.0536  C_lag1 0.0018  time   0.16 ms
+E_night  A0          phase  140.90  C_mean 0.0545  C_lag1 0.0018  time   0.64 ms
+E_night  A1_eq21     phase    0.62  C_mean 0.9998  C_lag1 0.9995  time   7.80 ms
+E_night  A1w_eq21_wide phase    0.50  C_mean 0.9999  C_lag1 0.9997  time  10.58 ms
+E_night  A2_eq22     phase    0.76  C_mean 0.9998  C_lag1 0.9997  time   7.05 ms
+E_night  A3_algo4    phase    0.49  C_mean 0.9999  C_lag1 0.9997  time  19.58 ms
+S1       raw_nogain  phase  142.62  C_mean 0.0497  C_lag1 0.0018  time   0.00 ms
+S1       A0          phase  142.62  C_mean 0.0505  C_lag1 0.0018  time   0.55 ms
+S1       A1_eq21     phase    3.89  C_mean 0.9965  C_lag1 0.9934  time   6.53 ms
+S1       A1w_eq21_wide phase    0.79  C_mean 0.9997  C_lag1 0.9998  time   8.93 ms
+S1       A2_eq22     phase    2.05  C_mean 0.9988  C_lag1 0.9997  time   4.33 ms
+S1       A3_algo4    phase    0.72  C_mean 0.9997  C_lag1 0.9998  time  13.07 ms
+M4       raw_nogain  phase  141.44  C_mean 0.0527  C_lag1 0.0029  time   0.00 ms
+M4       A0          phase  141.44  C_mean 0.0533  C_lag1 0.0029  time   0.65 ms
+M4       A1_eq21     phase    2.67  C_mean 0.9973  C_lag1 0.9991  time   7.07 ms
+M4       A1w_eq21_wide phase    2.57  C_mean 0.9974  C_lag1 0.9993  time   9.45 ms
+M4       A2_eq22     phase    6.00  C_mean 0.9910  C_lag1 0.9982  time   4.60 ms
+M4       A3_algo4    phase    1.80  C_mean 0.9977  C_lag1 0.9995  time  13.80 ms
+
+=== Rule (a): V(A3) < V(A0), V(A1), V(A2) in EVERY full capture of E_day, E_night, S1 ===
+    cls       date  capture    A0     A1    A1w     A2     A3  A3_minus_A2  A3_minus_A1  A3_minus_A1w  rule_a_holds_vs_A1_as_protocol  rule_a_holds_vs_A1w_strict
+  E_day 2024-07-12 capture0 -0.02 -32.00 -36.11 -35.10 -36.15        -1.05        -4.15         -0.04                            True                        True
+  E_day 2024-07-12 capture1 -0.02 -25.19 -36.26 -35.42 -36.31        -0.88       -11.12         -0.04                            True                        True
+  E_day 2024-07-12 capture2 -0.01 -25.40 -36.22 -35.39 -36.26        -0.87       -10.86         -0.04                            True                        True
+  E_day 2024-07-12 capture3 -0.01 -24.68 -36.25 -35.40 -36.30        -0.90       -11.62         -0.05                            True                        True
+E_night 2024-07-24 capture0 -0.02 -34.58 -36.00 -34.77 -36.01        -1.24        -1.43         -0.01                            True                        True
+E_night 2024-07-24 capture1 -0.01 -35.80 -36.03 -34.74 -36.04        -1.31        -0.24         -0.01                            True                        True
+E_night 2024-07-24 capture2 -0.02 -35.46 -35.96 -34.69 -35.97        -1.28        -0.51         -0.01                            True                        True
+E_night 2024-07-24 capture3 -0.02 -35.93 -35.93 -34.72 -35.94        -1.22        -0.01         -0.01                            True                        True
+     S1 2024-07-12 capture2 -0.01 -23.63 -31.80 -27.28 -31.95        -4.67        -8.32         -0.14                            True                        True
+     S1 2024-07-12 capture3 -0.02 -24.40 -32.33 -27.76 -32.45        -4.69        -8.06         -0.12                            True                        True
+RULE (a) overall vs A1 as frozen (M3 code, n in [-3,3]): PASS
+RULE (a) overall vs A1w (widened n in [-8,8], stricter, added post hoc): PASS
+
+Window-level share where A3 has lower V than A2 / A1 (descriptive, windows correlated):
+method   A3_lt_A2  A3_lt_A1  A3_lt_A1w
+cls                                   
+E_day         1.0       1.0        1.0
+E_night       1.0       1.0        1.0
+M4            1.0       1.0        1.0
+S1            1.0       1.0        1.0
+
+=== Rule (b): |V2_oos - V2_in| for Algorithm 4 on matched frames (second half of window), class mean over primary captures ===
+    cls   V2_in  V2_oos  diff_dB  max_abs_diff_over_captures  rule_b_holds
+  E_day -36.285 -36.285    0.000                       0.000          True
+E_night -36.007 -36.007    0.000                       0.000          True
+     S1 -33.201 -33.200    0.000                       0.000          True
+     M4 -25.629 -25.620    0.009                       0.017          True
+RULE (b) overall: PASS
+
+=== Rule (c') / occupancy preservation: same-day pairs. separation = min(V occupied captures) - max(V empty captures), dB (>0 = every occupied capture above every empty capture) ===
+       method          pair  V_occ_mean  V_emp_mean  delta_V_dB  separation_dB  window_AUC_occ_above_emp  n_occ  n_emp
+   raw_nogain   S1 vs E_day      -0.014      -0.015       0.002         -0.002                     0.551      2      4
+   raw_nogain M4 vs E_night      -0.015      -0.015       0.000         -0.004                     0.518      3      4
+           A0   S1 vs E_day      -0.013      -0.015       0.002         -0.002                     0.560      2      4
+           A0 M4 vs E_night      -0.015      -0.015       0.000         -0.003                     0.520      3      4
+      A1_eq21   S1 vs E_day     -24.014     -26.819       2.805          0.286                     0.588      2      4
+      A1_eq21 M4 vs E_night     -23.890     -35.444      11.554         10.227                     0.972      3      4
+A1w_eq21_wide   S1 vs E_day     -32.068     -36.209       4.141          3.779                     0.991      2      4
+A1w_eq21_wide M4 vs E_night     -24.036     -35.980      11.944         11.435                     1.000      3      4
+      A2_eq22   S1 vs E_day     -27.520     -35.329       7.809          7.341                     0.996      2      4
+      A2_eq22 M4 vs E_night     -19.063     -34.728      15.664         15.043                     1.000      3      4
+     A3_algo4   S1 vs E_day     -32.201     -36.255       4.055          3.701                     0.992      2      4
+     A3_algo4 M4 vs E_night     -24.481     -35.991      11.510         11.311                     1.000      3      4
+RULE (c') for A3: S1 vs E_day: separation 3.70 dB -> PASS; M4 vs E_night: separation 11.31 dB -> PASS
+
+=== Frame-power std before Eq.(6) (dB), per class: mean over primary captures [min,max] and share of windows with a >3 dB frame-power range ===
+E_day    std 0.099 [0.044,0.165] dB ; windows with range>3 dB: 2.5%
+E_night  std 1.087 [0.383,1.560] dB ; windows with range>3 dB: 93.2%
+S1       std 1.285 [1.274,1.297] dB ; windows with range>3 dB: 74.0%
+M4       std 1.106 [0.934,1.435] dB ; windows with range>3 dB: 50.8%
+
+=== Validity diagnostics (primary), mean over captures of window means ===
+cls                       E_day  E_night       S1       M4
+tau22_med_ns            142.413  170.315  154.898  150.474
+tau22_std_ns             22.983   18.417   23.736   16.712
+tau22_absmax_ns         340.904  233.038  375.573  215.532
+tau22_over_halfTs         0.000    0.000    0.000    0.000
+kbar_frac                 0.939    0.991    0.982    0.976
+b_flatness_std_dB         4.139    2.461    2.677    3.192
+d21_vs_A3_med_abs_ns      0.042    0.024    0.103    0.470
+d21_vs_A3_frac_gt25ns     0.003    0.000    0.004    0.000
+d21w_vs_A3_med_abs_ns     0.042    0.024    0.103    0.470
+d21w_vs_A3_frac_gt25ns    0.000    0.000    0.000    0.000
+d22_vs_A3_med_abs_ns      0.226    0.259    0.699    2.225
+d22_vs_A3_frac_gt25ns     0.000    0.000    0.000    0.000
+tau21_std_ns             19.602   18.359   20.301   16.427
+tau3_std_ns              22.975   18.449   23.723   16.511
+
+Static-fraction proxy gamma_hat = 1 - 10^(V_A3/10) per class: {'E_day': np.float64(0.99976), 'E_night': np.float64(0.99975), 'S1': np.float64(0.9994), 'M4': np.float64(0.99644)}
