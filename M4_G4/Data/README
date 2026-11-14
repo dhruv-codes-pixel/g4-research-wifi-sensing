@@ -1,221 +1,94 @@
-This README file was generated on 2025-10-21 by Elena Tonini.
+# 20 MHz 802.11ax CSI data – split archives and source
 
+This repository contains **split archives of a subset of the 20 MHz portion** of a public Wi-Fi CSI dataset. GitHub limits individual file sizes, so the 20 MHz archive (`20MHz.zip`, about 481 MB / 504,837,103 bytes) could not be uploaded as a single file and was divided into the smaller `.zip` files listed below and also the ZIP.mat and ZIP (2) exceeds 25MB limit and thus will be available after splitting the original 20MHz dataset from the link.
+> **Important – these splits are NOT the complete dataset.** See [What the split files actually contain](#what-the-split-files-actually-contain). The full, authoritative data must be obtained from Zenodo (link below).
 
-GENERAL INFORMATION
+## Original dataset (please cite this, not this repository)
 
-1. Title of Dataset:
-    Towards a Quantitative Analysis of CSI for AI/ML Based Sensing
+| Field | Value |
+|---|---|
+| Title (v1) | *Towards a Quantitative Analysis of CSI for AI/ML Based Sensing* |
+| Title (v2, Oct 2025) | *802.11ax Wi-Fi Channel State Information (CSI) Measurements for Wireless Sensing* |
+| Authors | Elena Tonini, Renato Lo Cigno (University of Brescia); v1 also lists Francesco Gringoli and Marco Cominelli (Politecnico di Milano) |
+| Repository | Zenodo |
+| Record / concept DOI | [10.5281/zenodo.14651521](https://doi.org/10.5281/zenodo.14651521) |
+| Record URL | <https://zenodo.org/records/14651521> (latest version: <https://zenodo.org/records/14651521/latest>) |
+| License | Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) – <https://creativecommons.org/licenses/by-sa/4.0/> |
+| Collection site | Department of Information Engineering, University of Brescia, Office 4, Via Branze 43, Brescia, Italy |
+| Collection period (per dataset README) | 2024-07-12 to 2025-08-31 |
+| Hardware / tool | Asus RT-AX82U (transmitter) and RT-AX86U / RT-AX82U (receiver), Broadcom BCM43684 chipset; CSI extracted with [Nexmon CSI](https://github.com/seemoo-lab/nexmon_csi) |
+| Associated paper | E. Tonini, F. Gringoli, R. Lo Cigno, M. Cominelli, "Towards a Quantitative Analysis of CSI for AI/ML Based Sensing," *2025 IEEE Wireless Communications and Networking Conference (WCNC)*, Milan, 2025, pp. 1–6, doi: [10.1109/WCNC61545.2025.10978183](https://doi.org/10.1109/WCNC61545.2025.10978183) |
 
-2. Authors Information:
-    Name: Elena Tonini
-    Institution: University of Brescia, Italy
-    Email: elena.tonini@unibs.it
-    
-    Name: Renato Lo Cigno
-    Institution: University of Brescia, Italy
-    Email: renato.locigno@unibs.it
+The README shipped inside the dataset (dated 2025-10-21) also refers to the version DOI `10.5281/zenodo.17225694` for the paper's experimental setups. **Please check on the Zenodo record page which exact version your copy corresponds to and cite that version DOI.** The v2 record additionally lists: E. Tonini and R. Lo Cigno, "Leveraging Mutual Information in Stochastic CSI Analysis for Wi-Fi Sensing," WONS 2026.
 
+### Suggested citation
 
-3. Date and geographic location of data collection:
-    From: 2024-07-12 (yyyy-mm-dd)
-    To:   2025-08-31 (yyyy-mm-dd)
-    Where: Department of Information Engineering, University of Brescia, Office 4
-           Via Branze 43, 25123 Brescia, Italy
+> E. Tonini, F. Gringoli, R. Lo Cigno and M. Cominelli, "Towards a Quantitative Analysis of CSI for AI/ML Based Sensing," 2025 IEEE Wireless Communications and Networking Conference (WCNC), Milan, Italy, 2025, pp. 1–6, doi: 10.1109/WCNC61545.2025.10978183.
+> Dataset: Zenodo, doi: 10.5281/zenodo.14651521 (CC BY-SA 4.0).
 
+We did not create this data. Everything here is redistributed under the original CC BY-SA 4.0 licence: attribution to the authors above is required, and any redistribution or derivative of the data must keep the same licence. Our own code is licensed separately (see the repository licence).
 
-SHARING/ACCESS INFORMATION
+## Dataset structure (as documented by the authors)
 
-License:
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
-International License. To view a copy of this license, visit
-https://creativecommons.org/licenses/by-sa/4.0/.
+```
+20MHz/
+  0people/   2024-07-12/  capture0..3 (.pcap, .mat), config.json     # empty room (E)
+             2024-07-24/  capture0..3 (.pcap, .mat), config.json     # empty room (E)
+  1people/   2024-07-12/  capture1..3 (.pcap, .mat), config.json     # one person sitting (S)
+  4people/   2024-07-24/  capture0..3 (.pcap, .mat), config.json     # four people, meeting (M)
+```
 
+* `captureN.pcap` – raw Nexmon CSI capture; `captureN.mat` – complex CSI extracted from it with MATLAB.
+* `.mat` files are **MATLAB v7.3 (HDF5)**; the variable is `capture`, stored as a real/imag compound array of shape (256, packets) in h5py, i.e. packets × 256 FFT bins in MATLAB. 242 of the 256 bins are active (802.11ax 20 MHz tones −122…−2 and +2…+122); the other 14 are exactly zero.
+* `config.json` records the setup (location, `usleep` = 33 ms between frames, expected 19,000 frames, number of people, notes).
+* In the 20 MHz data used by our experiments there are 15 `.mat` captures (8 empty, 3 sitting, 4 meeting).
 
-DATA INFORMATION
+## What the split files actually contain
 
-1. OVERVIEW:
-    The first version of this dataset has been used to conduct a quantitative 
-    analysis of the CSI to gain insight into the potential and limitations of 
-    CSI-based ambient sensing in the paper "Towards a Quantitative Analysis of
-    CSI for AI/ML Based Sensing." 
+The archives were produced by splitting/zipping files individually, so **the folder hierarchy was not preserved** and several parts contain only empty macOS metadata. Inspected contents:
 
-    This version of the dataset has been used in the extensions of the aforementioned
-    work. 
+| File | Contents |
+|---|---|
+| `ZIP_mat.zip` (~85 MB) | `capture0.mat`–`capture3.mat` (sizes match `0people/2024-07-12/`) |
+| `ZIP__20mhz__2_.zip` (~88 MB) | `capture0.pcap`–`capture3.pcap` (sizes match `0people/2024-07-12/`) |
+| `ZIP__20mhz__4_.zip` | one `config.json` (632 bytes, matches `0people/2024-07-12/config.json`) |
+| `ZIP__20mhz__1_.zip` | only a macOS `._20MHz` metadata stub |
+| `ZIP__20mhz__3_.zip` | only a macOS `._2024-07-24` stub |
+| `ZIP__20mhz__5_.zip` | only a macOS `._2024-07-12` stub |
+| `ZIP__20mhz__6_.zip` | only a macOS `._0people` stub |
+| `ZIP__20mhz__7_.zip` | only a macOS `._4people` stub |
+| `ZIP__20mhz__8_.zip` | only a macOS `._1people` stub |
 
-    The dataset is split into several folders containing pcap and mat files, one 
-    for each CSI capture considered in the paper. A detailed description 
-    of all the experimental setups can be found in the paper, together 
-    with a map of the environment reporting the positions of all the nodes.
+Consequences:
 
-2. CHANGES W.R.T. VERSION 1
-    a. Folder naming has been converted from DDMMYYYY to YYYY-MM-DD with the
-	optional addition of _HH-mm-SS, if known
-    b. config_info.json files were renamed to config.json
-    c. Additional fields were added to config.json:
-	- code: indicates the experiment code
-	- posTX, posRX: indicate the position of the transmitter and receiver in the room 
-	- nframes: number of expected frames for each experiment in the set having 
-		   the given configuration file
-    d. The field "avgDuration" was removed from config.json
-    e. CSI captures that were already present in V1 were converted from csv to mat files
-    f. New CSI captures are already shared as one mat file per each antenna used within
-	the same experiment + the pcap file from which they were extracted 
+1. The splits together hold only the **empty-room recordings of 2024-07-12** (4 captures) – roughly 170 MB, not the full ~481 MB archive. The empty-room 2024-07-24, one-person and four-people recordings are **not** included.
+2. Files beginning with `._` are macOS "AppleDouble" resource-fork files and can be ignored/deleted.
+3. After unzipping, recreate the layout manually, e.g. put the four `.mat`, four `.pcap` and the `config.json` into `20MHz/0people/2024-07-12/`.
 
-3. File naming convention:
-    Every file is named according to the following naming convention:
-        ./captureIDX.pcap
-        ./captureIDX[coreN].mat
-    where:
-    - IDX identifies the index of the experiment within the selected 
-    experimental setup.
-    - coreN is optional and identifies the antenna from which the CSI were extracted.
-    The used antennas are:
-	Antenna 0 -> core1
-	Antenna 2 -> core3
-	Antenna 3 -> core4
-    If coreN is missing, the implied value is core1.
+> If you intended the repository to hold the whole 481 MB dataset, re-create the split from the original archive (see below) instead of using these files.
 
-    A complete description of the considered experimental setups can be found in the paper
-    associated to version 10.5281/zenodo.17225694 of the dataset.
+## Getting the complete dataset
 
+1. Open <https://zenodo.org/records/14651521/latest> (or the DOI <https://doi.org/10.5281/zenodo.14651521>) and download the 20 MHz archive (the record also provides 40 MHz and 80 MHz data; the v1 file `csiq_dataset.zip` is 2.1 GB).
+2. Unzip it so the folder structure above is preserved.
+3. Point the code at it:
 
-4. Dataset structure:
-    A summarized representation of the structure of the dataset is presented below:
+```bash
+export M4_DATA_ROOT=/path/to/20MHz          # Windows PowerShell: $env:M4_DATA_ROOT="C:\path\to\20MHz"
+python build_inventory.py --data-root "$M4_DATA_ROOT" --out results
+python run_m4_experiment.py --data-root "$M4_DATA_ROOT" --captures captures.csv --out results/real_20mhz
+```
 
-    |- README.md
-    |- 20MHz
-        |- 0people
-            |- 2024-07-24
-                |- capture0.pcap
-                |- capture0.mat
-                |- ...
-                |- config.json
-            |- 2024-07-12
-                |- capture0.pcap
-                |- capture0.mat
-                |- ...
-        |- 1people
-            |- ...
-        |- 4people
-    |- 40MHz
-        |- 0people
-        |- ...
-        |- 5people
-            |- 2024-08-01
-                |- S1
-                    |- capture0.pcap
-                    |- capture0.mat
-                    |- ...
-                |- S2
-                    |- capture0.pcap
-                    |- capture0.mat
-                    |- ...
-    |- 80MHz
-        |- 0people
-	    |- 2024-08-02
-		|- capture0.pcap
-		|- capture0.mat
-		|- config.json
-	    |- 2025-07-22_15-27-50
-		|- capture1.pcap
-		|- config.json
-		|- capture1core1.mat
-		|- capture1core3.mat
-		|- ...
-        |- ...
+### Re-splitting a large archive for GitHub (keeps the structure)
 
-    The datasets consists of this README and some zipped folders (20MHz, 40MHz, and 80MHz), 
-    each corresponding to a different channel bandwidth used during one or more experiments.
-    The 80MHz folder had to be split into portions, each containing the CSI collected with
-    a different number of people in the room.
-    The 20 and 40MHz folders contain sub-folders named after the number of people in the room
-    when the experiment was carried out.  
+```bash
+# split into 90 MB parts (GitHub's hard limit is 100 MB per file)
+split -b 90m -d 20MHz.zip 20MHz.zip.part_
+# re-assemble
+cat 20MHz.zip.part_* > 20MHz.zip && unzip 20MHz.zip
+```
+Alternatively use Git LFS, or link to Zenodo instead of re-hosting the data (preferred, because it keeps the citation and version information with the authors' record).
 
-    Within each sub-folder is an additional folder named after the date of the experiment
-    (YYYY-MM-DD[_HH-mm-SS]):
-    -   If all experiments were performed under the same environmental conditions, such 
-        sub-folders contain the pcap files (i.e., the raw CSI data), the extracted CSI data in mat
-        files and the 'config.json' file with the description of the experimental setup (see 
-	below for further details);
-    -   If multiple experimental setups were used during the same day and HH-mm-SS is unknown,
-	there is one additional sub-folder for each setup, which then contains the captures 
-	and the config file.
+## Verifying integrity
 
-    The config file contains some fields whose values are deemed relevant for the 
-    identification of the experimental setup. Besides the straightforward fields (e.g. day, 
-    month, year, ...), some additional ones are:
-    - locationID: 
-        * U004: Office 4, DII, University of Brescia (via Branze 38, Brescia)
-        * L001: Telecommunication Laboratory, DII, University of Brescia (via Branze 38, Brescia)
-    - experiment:
-        * capture
-    - adHocTransmission:
-        * true: frames with random content are generated purposefully for the experiment
-        * false: real traffic is captured
-    - usleep: time in microseconds between two consecutive frames
-    - nframes: number of expected frames for each experiment associated to this config file
-    - bandwidth:
-        * 20 [MHz]
-        * 40 [MHz]
-        * 80 [MHz]
-    - modulation:
-        * ax
-        * ac
-    - people
-        * present:
-            * true: people are present in the location during the capture
-            * false: nobody is present in the location during the capture
-        * moving:
-            * true: people are present in the location and moving around 
-            * false: people are either present and standing still or absent from the location
-    - code: code identifying the experiments associated with this config file
-
-    The names of the people inside the room (if any) have been anonymized.
-
-METHODOLOGICAL INFORMATION
-
-1. Data collection:
-    All the CSI in the dataset have been collected using Nexmon CSI
-    (https://github.com/seemoo-lab/nexmon_csi), a framework that allows
-    to extract the CSI from a number of commercial Wi-Fi chipsets.
-
-    For the experiments inherited from V1, the transmitter and receiver are both RT-AX82U 
-    Access Points from Asus.
-    For new experiments, the transmitter is an RT-AX82U and the receiver is an RT-AX86U
-    from Asus. 
-    All APs are equipped with the Wi-Fi Broadcom chipset BRCM43684.
-
-2. Data processing:
-    Raw CSI data have been processed with MATLAB and the complex-valued CSIs
-    have been stored in the mat files that are made available. 
-    CSI extraction from pcap files consists in the following steps, performed on each 
-    collected packet:
-    - extraction of metadata from the packet header;
-    - extraction of the CSI from the packet payload: this task requires to account for all 
-        the used spatial streams, depending on the number of antennas used at the transmitter
-        and receiver; 
-    - storage of the CSI in a mat file.
-
-    To ensure the reproducibility of the results, the extracted CSI data are
-    provided as well as the raw data.
-    
-3. Environmental conditions:
-    The data collection has been performed over several months; however, the conditions
-    of the room throughout the days are described in each config file associated to each
-    set of experiments characterized by the same experimental setup.
-
-    The different conditions under which the experiments were performed are a feature
-    of the studies based on this dataset, as the goal of the papers associated to it is to
-    characterize the long-term behavior of a propagation channel to support CSI-based 
-    environment classification.
-
-4. Privacy policy:
-    The dataset does not contain any personal data. 
-    The names of the people in the room at the time of each experiment have been 
-    anonymized to guarantee their privacy.
-    The CSI stored in the dataset have been collected from the nodes involved in the 
-    experiment only and do not contain information related to any identifiable person.
-
-
-For further information, we recommend to read the paper or contact the authors.
-
+Our `build_inventory.py` writes SHA-256 checksums of every `.mat` file to `results/data_checksums.json`. Compare them after reassembling to make sure no file was altered.
