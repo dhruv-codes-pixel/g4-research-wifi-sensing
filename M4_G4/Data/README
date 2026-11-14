@@ -1,0 +1,221 @@
+This README file was generated on 2025-10-21 by Elena Tonini.
+
+
+GENERAL INFORMATION
+
+1. Title of Dataset:
+    Towards a Quantitative Analysis of CSI for AI/ML Based Sensing
+
+2. Authors Information:
+    Name: Elena Tonini
+    Institution: University of Brescia, Italy
+    Email: elena.tonini@unibs.it
+    
+    Name: Renato Lo Cigno
+    Institution: University of Brescia, Italy
+    Email: renato.locigno@unibs.it
+
+
+3. Date and geographic location of data collection:
+    From: 2024-07-12 (yyyy-mm-dd)
+    To:   2025-08-31 (yyyy-mm-dd)
+    Where: Department of Information Engineering, University of Brescia, Office 4
+           Via Branze 43, 25123 Brescia, Italy
+
+
+SHARING/ACCESS INFORMATION
+
+License:
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. To view a copy of this license, visit
+https://creativecommons.org/licenses/by-sa/4.0/.
+
+
+DATA INFORMATION
+
+1. OVERVIEW:
+    The first version of this dataset has been used to conduct a quantitative 
+    analysis of the CSI to gain insight into the potential and limitations of 
+    CSI-based ambient sensing in the paper "Towards a Quantitative Analysis of
+    CSI for AI/ML Based Sensing." 
+
+    This version of the dataset has been used in the extensions of the aforementioned
+    work. 
+
+    The dataset is split into several folders containing pcap and mat files, one 
+    for each CSI capture considered in the paper. A detailed description 
+    of all the experimental setups can be found in the paper, together 
+    with a map of the environment reporting the positions of all the nodes.
+
+2. CHANGES W.R.T. VERSION 1
+    a. Folder naming has been converted from DDMMYYYY to YYYY-MM-DD with the
+	optional addition of _HH-mm-SS, if known
+    b. config_info.json files were renamed to config.json
+    c. Additional fields were added to config.json:
+	- code: indicates the experiment code
+	- posTX, posRX: indicate the position of the transmitter and receiver in the room 
+	- nframes: number of expected frames for each experiment in the set having 
+		   the given configuration file
+    d. The field "avgDuration" was removed from config.json
+    e. CSI captures that were already present in V1 were converted from csv to mat files
+    f. New CSI captures are already shared as one mat file per each antenna used within
+	the same experiment + the pcap file from which they were extracted 
+
+3. File naming convention:
+    Every file is named according to the following naming convention:
+        ./captureIDX.pcap
+        ./captureIDX[coreN].mat
+    where:
+    - IDX identifies the index of the experiment within the selected 
+    experimental setup.
+    - coreN is optional and identifies the antenna from which the CSI were extracted.
+    The used antennas are:
+	Antenna 0 -> core1
+	Antenna 2 -> core3
+	Antenna 3 -> core4
+    If coreN is missing, the implied value is core1.
+
+    A complete description of the considered experimental setups can be found in the paper
+    associated to version 10.5281/zenodo.17225694 of the dataset.
+
+
+4. Dataset structure:
+    A summarized representation of the structure of the dataset is presented below:
+
+    |- README.md
+    |- 20MHz
+        |- 0people
+            |- 2024-07-24
+                |- capture0.pcap
+                |- capture0.mat
+                |- ...
+                |- config.json
+            |- 2024-07-12
+                |- capture0.pcap
+                |- capture0.mat
+                |- ...
+        |- 1people
+            |- ...
+        |- 4people
+    |- 40MHz
+        |- 0people
+        |- ...
+        |- 5people
+            |- 2024-08-01
+                |- S1
+                    |- capture0.pcap
+                    |- capture0.mat
+                    |- ...
+                |- S2
+                    |- capture0.pcap
+                    |- capture0.mat
+                    |- ...
+    |- 80MHz
+        |- 0people
+	    |- 2024-08-02
+		|- capture0.pcap
+		|- capture0.mat
+		|- config.json
+	    |- 2025-07-22_15-27-50
+		|- capture1.pcap
+		|- config.json
+		|- capture1core1.mat
+		|- capture1core3.mat
+		|- ...
+        |- ...
+
+    The datasets consists of this README and some zipped folders (20MHz, 40MHz, and 80MHz), 
+    each corresponding to a different channel bandwidth used during one or more experiments.
+    The 80MHz folder had to be split into portions, each containing the CSI collected with
+    a different number of people in the room.
+    The 20 and 40MHz folders contain sub-folders named after the number of people in the room
+    when the experiment was carried out.  
+
+    Within each sub-folder is an additional folder named after the date of the experiment
+    (YYYY-MM-DD[_HH-mm-SS]):
+    -   If all experiments were performed under the same environmental conditions, such 
+        sub-folders contain the pcap files (i.e., the raw CSI data), the extracted CSI data in mat
+        files and the 'config.json' file with the description of the experimental setup (see 
+	below for further details);
+    -   If multiple experimental setups were used during the same day and HH-mm-SS is unknown,
+	there is one additional sub-folder for each setup, which then contains the captures 
+	and the config file.
+
+    The config file contains some fields whose values are deemed relevant for the 
+    identification of the experimental setup. Besides the straightforward fields (e.g. day, 
+    month, year, ...), some additional ones are:
+    - locationID: 
+        * U004: Office 4, DII, University of Brescia (via Branze 38, Brescia)
+        * L001: Telecommunication Laboratory, DII, University of Brescia (via Branze 38, Brescia)
+    - experiment:
+        * capture
+    - adHocTransmission:
+        * true: frames with random content are generated purposefully for the experiment
+        * false: real traffic is captured
+    - usleep: time in microseconds between two consecutive frames
+    - nframes: number of expected frames for each experiment associated to this config file
+    - bandwidth:
+        * 20 [MHz]
+        * 40 [MHz]
+        * 80 [MHz]
+    - modulation:
+        * ax
+        * ac
+    - people
+        * present:
+            * true: people are present in the location during the capture
+            * false: nobody is present in the location during the capture
+        * moving:
+            * true: people are present in the location and moving around 
+            * false: people are either present and standing still or absent from the location
+    - code: code identifying the experiments associated with this config file
+
+    The names of the people inside the room (if any) have been anonymized.
+
+METHODOLOGICAL INFORMATION
+
+1. Data collection:
+    All the CSI in the dataset have been collected using Nexmon CSI
+    (https://github.com/seemoo-lab/nexmon_csi), a framework that allows
+    to extract the CSI from a number of commercial Wi-Fi chipsets.
+
+    For the experiments inherited from V1, the transmitter and receiver are both RT-AX82U 
+    Access Points from Asus.
+    For new experiments, the transmitter is an RT-AX82U and the receiver is an RT-AX86U
+    from Asus. 
+    All APs are equipped with the Wi-Fi Broadcom chipset BRCM43684.
+
+2. Data processing:
+    Raw CSI data have been processed with MATLAB and the complex-valued CSIs
+    have been stored in the mat files that are made available. 
+    CSI extraction from pcap files consists in the following steps, performed on each 
+    collected packet:
+    - extraction of metadata from the packet header;
+    - extraction of the CSI from the packet payload: this task requires to account for all 
+        the used spatial streams, depending on the number of antennas used at the transmitter
+        and receiver; 
+    - storage of the CSI in a mat file.
+
+    To ensure the reproducibility of the results, the extracted CSI data are
+    provided as well as the raw data.
+    
+3. Environmental conditions:
+    The data collection has been performed over several months; however, the conditions
+    of the room throughout the days are described in each config file associated to each
+    set of experiments characterized by the same experimental setup.
+
+    The different conditions under which the experiments were performed are a feature
+    of the studies based on this dataset, as the goal of the papers associated to it is to
+    characterize the long-term behavior of a propagation channel to support CSI-based 
+    environment classification.
+
+4. Privacy policy:
+    The dataset does not contain any personal data. 
+    The names of the people in the room at the time of each experiment have been 
+    anonymized to guarantee their privacy.
+    The CSI stored in the dataset have been collected from the nodes involved in the 
+    experiment only and do not contain information related to any identifiable person.
+
+
+For further information, we recommend to read the paper or contact the authors.
+
